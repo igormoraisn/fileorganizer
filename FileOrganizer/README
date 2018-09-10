@@ -1,0 +1,15 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------
+|						Organizador Brent                                                                                 |
+|                                                                                                                                                 |
+|* Os códigos-fontes foram feitos no Eclipse 4.4(Luna)/4.3(Kepler), com Java 7 e testados nas plataformas: Debian GNU/Linux e FreeBSD.            |
+|* O arquivo padrão que será criado na interface gráfica será default.db, mas pode-se mudar de arquivo com a opção "Abrir" do submenu "Arquivo".  |
+|* Recomenda-se o uso de arquivos .db.                                                                                                            |
+|* Para uma melhor utilização da interface gráfica, recomenda-se a criação de um projeto e a adição das pastas contidas neste diretório.          |
+|* A página de ajuda da interface gráfica só funcionará em sistemas UNIX, como Linux e BSD.                                                       |
+|* O tipo de retorno dos métodos delReg e getReg ao obter um registro inexistente pode ser modificado.                                            |
+|* O número de registros contidos no arquivo pode ser modificado, alterando a constante LENGTH da classe OrganizadorBrent.                        |
+|* Este mesmo número de registros deve ser primo.                                                                                                 |
+|* Os resultados obtidos com os testes realizados serão detalhados na análise de desempenho.                                                      |
+|                                                                                                                                                 |
+|                                                                                                                                                 |
+---------------------------------------------------------------------------------------------------------------------------------------------------

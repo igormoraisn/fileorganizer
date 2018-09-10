@@ -1,0 +1,7 @@
+body {background-color:white; color:black}
+form {text-align: center}
+h1 {color:blue; text-align:center}
+h2, h3, h4, h5, h6 {color:blue; text-align: left}
+p {text-align: left; color:black;font-family: arial}
+a {color: blue}
+a:hover {color: red} 
