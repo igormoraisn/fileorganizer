@@ -5,6 +5,8 @@
  */
 
 import java.io.File;
+import java.io.FileNotFoundException;
+
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JFrame;
@@ -35,26 +37,48 @@ public class InterfaceGrafica extends JFrame {
     private JMenu jmArquivo, jmAjuda;  
     private JMenuItem jmSair, jmCreditos, jmHelp, jmAbrir;  
     
-    public InterfaceGrafica () throws IOException{
+    public InterfaceGrafica () {
+        setTitle("Gerenciador de Arquivos");  	
+        initUI();
+    	setSize (600,400);
+        setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+        setVisible(true);   
+    }
+    public void initUI() {
         // Procedimentos iniciais
-    	super ("Gerenciador de Registros");   
-    	org = new OrganizadorSequencial("default.db");
+    	try {
+			org = new OrganizadorSequencial("default.db");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} 
         // Inicializacao dos componentes visuais
         ImageIcon imagemTituloJanela = new ImageIcon("icons/GerReg.png");  
         setIconImage(imagemTituloJanela.getImage());  
         botaoVoltar = new JButton("Voltar");
+        botaoVoltar.setName("voltar");
         botaoAdicionar = new JButton("Adicionar");
+        botaoAdicionar.setName("adiciona");
         botaoRemover = new JButton("Remover");
+        botaoRemover.setName("remove");
         botaoPesquisar = new JButton ("Pesquisar");
+        botaoPesquisar.setName("pesquisa");
         nomeRegistro = new JTextField (48);
+        nomeRegistro.setName("nomeReg");
         idadeRegistro = new JTextField (23);
+        idadeRegistro.setName("idadeReg");
         sexoRegistro = new JTextField (21);
+        sexoRegistro.setName("sexoReg");
         emailRegistro = new JTextField (23);
+        emailRegistro.setName("emailReg");
         enderecoRegistro = new JTextField (46);
+        enderecoRegistro.setName("enderecoReg");
         matriculaRegistro = new JTextField (18);
+        matriculaRegistro.setName("matriculaReg");
         adicionaRegistro = new JButton ("Adicionar");
+        adicionaRegistro.setName("addReg");
         apagaRegistro = new JButton ("Remover");
         retornaRegistro = new JButton ("Ver");
+        retornaRegistro.setName("retornaReg");
         jmb = new JMenuBar();
         jmArquivo = new JMenu("Arquivo");
         jmAjuda = new JMenu("Ajuda");
@@ -93,10 +117,7 @@ public class InterfaceGrafica extends JFrame {
         jmCreditos.addActionListener(manipulador);
         jmAbrir.addActionListener(manipulador);
         jmHelp.addActionListener(manipulador);
-        // Procedimentos finais
-        setSize (600,400);
-        setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-        setVisible(true);        
+        // Procedimentos finais  
     }
     private void setValores(){
     	this.nomeRegistro.setText("");;
@@ -132,12 +153,24 @@ public class InterfaceGrafica extends JFrame {
         painelNorte.validate();
         painelNorte.repaint();
         painelCentro.removeAll();
-        painelCentro.add(new JLabel ("Nome: " + nome +"\n"));
-        painelCentro.add(new JLabel ("Matrícula: " + matricula + "\n"));
-        painelCentro.add(new JLabel ("Email: " + email + "\n"));
-        painelCentro.add(new JLabel ("Endereço: " + endereco + "\n"));
-        painelCentro.add(new JLabel ("Idade: " + idade +  "\n"));
-        painelCentro.add(new JLabel ("Sexo: " + sexo + "\n"));
+        JLabel nomeLabel = new JLabel ("Nome: " + nome +"\n");
+        nomeLabel.setName("nomeLabel");
+        JLabel matriculaLabel = new JLabel ("Matrícula: " + matricula + "\n");
+        matriculaLabel.setName("matriculaLabel");
+        JLabel emailLabel = new JLabel ("Email: " + email + "\n");
+        emailLabel.setName("emailLabel");
+        JLabel enderecoLabel = new JLabel ("Endereço: " + endereco + "\n");
+        enderecoLabel.setName("enderecoLabel");
+        JLabel idadeLabel = new JLabel ("Idade: " + idade +  "\n");
+        idadeLabel.setName("idadeLabel");
+        JLabel sexoLabel = new JLabel ("Sexo: " + sexo + "\n");
+        sexoLabel.setName("sexoLabel");
+        painelCentro.add(nomeLabel);
+        painelCentro.add(matriculaLabel);
+        painelCentro.add(emailLabel);
+        painelCentro.add(enderecoLabel);
+        painelCentro.add(idadeLabel);
+        painelCentro.add(sexoLabel);
         painelCentro.add(botaoVoltar);
         painelCentro.validate();
         painelCentro.repaint();
