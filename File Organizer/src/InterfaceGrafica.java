@@ -1,7 +1,7 @@
 /* Interface Gráfica para Organizadores
  * Igor Nascimento dos Santos
  * Criado em 13-12-2014
- * Modificado pela última vez em 29-01-2015
+ * Modificado pela última vez em 21-12-1014
  */
 
 import java.io.File;
@@ -38,7 +38,7 @@ public class InterfaceGrafica extends JFrame {
     public InterfaceGrafica () throws IOException{
         // Procedimentos iniciais
     	super ("Gerenciador de Registros");   
-    	org = new OrganizadorBrent("default.db");
+    	org = new OrganizadorSequencial("default.db");
         // Inicializacao dos componentes visuais
         ImageIcon imagemTituloJanela = new ImageIcon("icons/GerReg.png");  
         setIconImage(imagemTituloJanela.getImage());  
@@ -95,8 +95,7 @@ public class InterfaceGrafica extends JFrame {
         jmHelp.addActionListener(manipulador);
         // Procedimentos finais
         setSize (600,400);
-        //setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         setVisible(true);        
     }
     private void setValores(){
@@ -198,7 +197,7 @@ public class InterfaceGrafica extends JFrame {
         		File name = fileChooser.getSelectedFile();
         		String nome = name.getName();
         		System.out.println(nome);
-        		org = new OrganizadorBrent(nome);
+        		org = new OrganizadorSequencial(nome);
         		redirecionarPagina(0);
         	}
         	catch(Exception e){
@@ -227,20 +226,15 @@ public class InterfaceGrafica extends JFrame {
         		int matricula;
         		short idade;
         		try{
-            		boolean resultado;
-        			nome = nomeRegistro.getText();
+            		nome = nomeRegistro.getText();
             		endereco = enderecoRegistro.getText();
             		email = emailRegistro.getText();
             		idade = (short) Integer.parseInt(idadeRegistro.getText());
             		matricula = Integer.parseInt(matriculaRegistro.getText());
             		sexo = sexoRegistro.getText();
         			Aluno a = new Aluno(matricula, nome, endereco, idade, sexo, email);
-        			resultado = org.addReg(a);
-        			if(resultado == true)
-        				JOptionPane.showMessageDialog(null, "Registro adicionado com sucesso!");
-        			else {
-        				JOptionPane.showMessageDialog(null, "Conjunto de registros cheio!");
-        			}
+        			org.addReg(a);
+        			JOptionPane.showMessageDialog(null, "Registro adicionado com sucesso!");
         			redirecionarPagina(0);
             	}
         		catch(Exception a){

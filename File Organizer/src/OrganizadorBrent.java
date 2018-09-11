@@ -68,7 +68,7 @@ public class OrganizadorBrent implements IFileOrganizer{
 			/* O método testaOpção fará o cálculo de acessos
 			 * E retornará a posição em que o registro a deve ser inserido
 			 */
-			resolucao = testaOpcao(cont, res, hash, a);
+			resolucao = testaOpção(cont, res, hash, a);
 			this.canal.write(a.getBuffer(), resolucao*Aluno.LENGTH);
 		}
 		return true;
@@ -146,7 +146,7 @@ public class OrganizadorBrent implements IFileOrganizer{
 		}
 		else return hash;	
 	}
-	public long testaOpcao(int opcao1, long pos, long hash, Aluno a) throws IOException{
+	public long testaOpção(int opção1, long pos, long hash, Aluno a) throws IOException{
 		/* O método testaOpção é o método que calula o menor número de acessos ao ocorrer uma colisão
 		 * Ele recebe o número de acessos para a inserção do novo registro, com os incrementos
 		 * Assim como o hash desse registro e a posição que ele seria inserido
@@ -175,7 +175,7 @@ public class OrganizadorBrent implements IFileOrganizer{
 			if(matricula == -1) matricula = 0;
 			else cont++;
 		}
-		if(cont >= opcao1){
+		if(cont >= opção1){
 			return pos;
 		}
 		else {
