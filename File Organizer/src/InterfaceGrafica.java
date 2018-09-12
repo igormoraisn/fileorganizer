@@ -77,6 +77,7 @@ public class InterfaceGrafica extends JFrame {
         adicionaRegistro = new JButton ("Adicionar");
         adicionaRegistro.setName("addReg");
         apagaRegistro = new JButton ("Remover");
+        apagaRegistro.setName("removeReg");
         retornaRegistro = new JButton ("Ver");
         retornaRegistro.setName("retornaReg");
         jmb = new JMenuBar();
